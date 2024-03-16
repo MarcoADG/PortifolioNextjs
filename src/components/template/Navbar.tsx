@@ -8,9 +8,13 @@ interface NavBarProps {
 
 export default function Navbar(props: NavBarProps) {
   const { tema, alternarTema } = useAppData();
+
+  const temaValue = tema || "";
+  const alternarTemaFunction = alternarTema || (() => {});
+
   return (
     <div
-      className={`${tema} bg-gray-300 dark:bg-gray-800
+      className={`${temaValue} bg-gray-300 dark:bg-gray-800
                     shadow-2xl shadow-gray-400 dark:shadow-gray-600
                     `}
     >
@@ -65,7 +69,10 @@ export default function Navbar(props: NavBarProps) {
             <></>
           )}
         </div>
-        <BotaoAlternarTema tema={tema} alternarTema={alternarTema} />
+        <BotaoAlternarTema
+          tema={temaValue}
+          alternarTema={alternarTemaFunction}
+        />
       </nav>
     </div>
   );

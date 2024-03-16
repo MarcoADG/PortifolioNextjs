@@ -10,6 +10,8 @@ interface MobileNavbarProps {
 export default function MobileNavbar(props: MobileNavbarProps) {
   const { tema, alternarTema } = useAppData();
   const [expanded, setExpanded] = useState(false);
+  const temaValue = tema || "";
+  const alternarTemaFunction = alternarTema || (() => {});
 
   const toggleExpansion = () => {
     setExpanded(!expanded);
@@ -57,7 +59,10 @@ export default function MobileNavbar(props: MobileNavbarProps) {
           <></>
         )}
         <div className={`mt-2`}>
-          <BotaoAlternarTema tema={tema} alternarTema={alternarTema} />
+          <BotaoAlternarTema
+            tema={temaValue}
+            alternarTema={alternarTemaFunction}
+          />
         </div>
       </div>
       <div className="flex justify-end mt-4">
